@@ -1,0 +1,30 @@
+# // Definition:
+# // The geographical origin of the sample as defined
+# // by the country or location
+
+# // Helpful hints:
+# // chosen from the GAZ ontology
+
+# // Links:
+# // ols.wordvis.com - Gazetteer ontology
+
+# // Expected values: "i.e. USA:CA"
+
+# // Examples:
+# //   * host-associated: "Brazil:Amazonas:Manaus", "USA:CA:San Diego", "USA:WA:Tatoosh", "Puerto Rico", "Brazil:Amazonas"
+# //   * human: "USA:NY", "USA:CA", "USA:CO:Boulder", "USA:CA:San Diego"
+# //   * environmental: "USA:NY:Ithaca", "USA:MI:Cleveland", "USA:CA:San Diego"
+# //   * other: "USA:CA:San Diego"
+
+# normalization:          # <-- completely remove if "No range applicable"
+# - No range applicable   # (because when applica
+
+
+blank: Not applicable
+expected: Gazetteer ontology
+format: str
+remap:
+  USA: US
+check:
+ - exist
+ - typos

@@ -24,7 +24,8 @@ setup(
         ["q2-metadata=q2_metadata.plugin_setup:plugin"]
     },
     package_data={
-        'q2_metadata': ['templates/tabulate/*'],
+        'q2_metadata': ['templates/tabulate/*',
+                        'normalization/rules/*.yml'],
     },
     zip_safe=False,
 )

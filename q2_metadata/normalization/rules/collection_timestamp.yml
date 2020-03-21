@@ -1,0 +1,26 @@
+ # // Definition:
+# // The day and time of sampling, single point
+# // in time using a 24 hour time
+# // format
+
+# // Helpful hints:
+# // YYYY-MM-DD hh:mm (24 hour time); or YYYY-MM-DD, YYYY-MM
+# // or YYYY
+
+# // Links: ISO 8601
+
+# // Expected values: "full datetime in MM/DD/YYYY HH:MM format, i.e. 12/04/2015 10:27"
+
+# // Examples:
+# //   * host-associated: "2015", "2017-07-10", "2015-05-23", "2017-05-23 11:00", "2011-09 -09 14:30", "2017-05-23"
+# //   * human: "2018-12-18", "2018-01", "2017-06-05", "2016-11-22"
+# //   * environmental: "2016-11-22", "2017-06-05", "2017-05-23 11:00"
+# //   * other: "2016-11-22"
+
+# normalization:           # completely remove if "No range applicable"
+# - No range applicable
+# blank: no blank value    # then rather only leave "- must exist" in "validation"
+
+format: 2016-11-22
+check:
+ - exist

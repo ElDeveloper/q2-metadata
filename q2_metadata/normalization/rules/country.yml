@@ -1,0 +1,23 @@
+# // Definition:
+# // Country where the sample was collected
+
+# // Helpful hints: mimarks
+
+# // Expected values: "i.e. USA"
+
+# // Blank value: "Not applicable"
+
+# normalization:          # <-- completely remove if "No range applicable"
+# - No range applicable
+
+
+blank: Not applicable
+expected: Gazetteer ontology
+format: str
+validation:
+  force_to_blank_if:
+    is null:
+    - host_taxid
+check:
+ - exist
+ - typos

@@ -1,0 +1,37 @@
+# // Definition:
+# // from UBERON e.g. skin, feces
+
+# // Helpful hints:
+# // required for all host-associated samples
+
+# // Links:
+# // ols.wordvis.com
+
+# // Expected: "UBERON:feces", "UBERON:saliva", "UBERON:sebum", "UBERON:mucus", "UBERON:tears", "UBERON:cerumen"
+
+# // Examples:
+# //   * host-associated: "UBERON:parenchyma of spleen", "UBERON:lymphoid tissue", "Not applicable", "UBERON:saliva", "UBERON:mucus", "UBERON:blood", "UBERON:multicellular organism", "UBERON:organism substance", "UBERON:sebum", "UBERON:lumen of gut", "UBERON:feces"
+# //   * human: "UBERON:urine", "UBERON:ear wax", "UBERON:saliva", "UBERON:mucus", "UBERON:bodily fluid", "UBERON:blood", "UBERON:nail", "UBERON:sputum", "UBERON:colon mucosa", "UBERON:sebum", "UBERON:lumen of gut", "UBERON:feces"
+# //   * environmental: "Not applicable"
+# //   * other: "Not applicable"
+
+# // Blank: "Not applicable"
+
+# normalization:         # <-- completely remove if "No range applicable"
+# - No range applicable
+
+
+
+blank: Not applicable
+expected:
+- UBERON:feces
+- UBERON:saliva
+- UBERON:sebum
+- UBERON:mucus
+- UBERON:tears
+- UBERON:cerumen
+format: str
+validation:
+  force_to_blank_if:
+    is null:
+    - host_taxid

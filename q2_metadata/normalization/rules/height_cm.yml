@@ -1,0 +1,18 @@
+# // Definition:
+# // Participant height in cm
+
+# // Blank value: "Not applicable"
+
+# // Missing values: "Not provided"
+
+blank: Not applicable
+format: int
+missing: Not provided
+normalization:
+  gated_value: Out of bounds
+  maximum: 120
+  minimum: 0
+validation:
+  force_to_blank_if:
+    is null:
+    - host_taxid

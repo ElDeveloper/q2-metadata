@@ -1,0 +1,24 @@
+# // Definition:
+# // How often does the participant eat fermented plants
+# // (i.e. Saurkraut, Kimchi)
+# // Helpful hints: frequency
+# // Expected values: "Never", "Rarely (less than once/week)", "Occasionally (1-2 times/week)", "Regularly (3-5 times/week)", "Daily"
+# // Blank value: "Not applicable"
+# // Missing values: "Not provided"
+
+# normalization:        # <- just remove if not applicable
+# - No range applicable #
+
+blank: Not applicable
+format: str
+missing: Not provided
+expected:
+- Never
+- Rarely (less than once/week)
+- Occasionally (1-2 times/week)
+- Regularly (3-5 times/week)
+- Daily
+validation:
+  force_to_blank_if:
+    is null:
+    - host_taxid

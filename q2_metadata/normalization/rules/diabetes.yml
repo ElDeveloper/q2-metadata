@@ -1,0 +1,28 @@
+# // Definition:
+# // Has the participant been diagnosed with diabetes?
+
+# // Helpful hints:
+# // medical condition
+
+# // Expected values: "I do not have this condition", "Self-diagnosed", "Diagnosed by a medical professional (doctor, physician assistant)", "Diagnosed by an alternative medicine practitioner"
+
+# // Blank value: "Not applicable"
+
+# // Missing values: "Not provided"
+
+# normalization:
+# - No range applicable  # <-- completely remove if "No range applicable"
+
+
+blank: Not applicable
+format: str
+missing: Not provided
+expected:
+- I do not have this condition
+- Self-diagnosed
+- Diagnosed by a medical professional (doctor, physician assistant)
+- Diagnosed by an alternative medicine practitioner
+validation:
+  force_to_blank_if:
+    is null:
+    - host_taxid

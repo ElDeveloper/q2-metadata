@@ -6,18 +6,20 @@
 # The full license is in the file LICENSE, distributed with this software.
 # ----------------------------------------------------------------------------
 
+import importlib
 import qiime2.plugin
-from qiime2.plugin import MetadataColumn, Numeric
+from qiime2.plugin import MetadataColumn, Numeric, Metadata, Str
 
-import q2_metadata
-
-from q2_metadata import tabulate, distance_matrix
+from q2_metadata import tabulate, distance_matrix, __version__
 from q2_types.distance_matrix import DistanceMatrix
 
+from ._normalize import normalize
+from ._type import MetadataX
+from ._format import MetadataFormat, MetadataDirectoryFormat
 
 plugin = qiime2.plugin.Plugin(
     name='metadata',
-    version=q2_metadata.__version__,
+    version=__version__,
     website='https://github.com/qiime2/q2-metadata',
     package='q2_metadata',
     user_support_text=None,
@@ -26,6 +28,7 @@ plugin = qiime2.plugin.Plugin(
                  'and visualizing Metadata.'),
     short_description='Plugin for working with Metadata.'
 )
+
 
 plugin.methods.register_function(
     function=distance_matrix,
@@ -41,6 +44,25 @@ plugin.methods.register_function(
                 'Tip: the distance matrix produced by this method can be used '
                 'as input to the Mantel test available in `q2-diversity`.'
 )
+
+
+plugin.methods.register_function(
+    function=normalize,
+    inputs={},
+    parameters={
+        'metadata': Metadata,
+        'rules_dir': Str
+    },
+    parameter_descriptions={
+        'metadata': 'The sample metadata.',
+        'rules_dir': 'The path to the yaml rules folder.'
+    },
+    outputs=[('curated_metadata', MetadataX)],
+    output_descriptions={'curated_metadata': 'The curated sample metadata.'},
+    name='Normalize metadata',
+    description='Normalize metadata according to a series of rules.'
+)
+
 
 plugin.visualizers.register_function(
     function=tabulate,
@@ -59,3 +81,11 @@ plugin.visualizers.register_function(
                 'visualization supports interactive filtering, sorting, and '
                 'exporting to common file formats.',
 )
+
+
+plugin.register_semantic_types(MetadataX)
+plugin.register_semantic_type_to_format(
+    MetadataX, artifact_format=MetadataDirectoryFormat
+)
+plugin.register_formats(MetadataFormat, MetadataDirectoryFormat)
+importlib.import_module('q2_metadata._transformer')
